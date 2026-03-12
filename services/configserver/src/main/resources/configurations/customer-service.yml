@@ -1,3 +1,6 @@
+spring:
+    data:
+      mongodb: mongodb://root:root@localhost:27017/customer?authSource=admin
 mongodb:
   username: root
   password: root
