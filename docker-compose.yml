@@ -4,7 +4,7 @@ services:
     container_name: ms_postgres_sql
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: root
       PGDATA: /var/lib/postgresql/data
       POSTGRES_DB: mydb
     volumes:

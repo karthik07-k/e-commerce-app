@@ -2,6 +2,7 @@ package com.org.ecom.service;
 
 import com.org.ecom.customer.Customer;
 import com.org.ecom.model.CustomerRequest;
+import com.org.ecom.model.CustomerResponse;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,15 @@ public class CustomerMapper {
                 .email(customer.getEmail())
                 .address(customer.getAddress())
                 .build();
+    }
+
+    public CustomerResponse buildCustomerResponse(Customer customer) {
+        return new CustomerResponse(
+                customer.getId(),
+                customer.getFirstName(),
+                customer.getLastName(),
+                customer.getEmail(),
+                customer.getAddress()
+        );
     }
 }

@@ -31,5 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-/${project.build.directory}/classes/application.yml
-/${project.build.directory}/classes/com/service/discovery/ServiceDiscoveryApplication.class
