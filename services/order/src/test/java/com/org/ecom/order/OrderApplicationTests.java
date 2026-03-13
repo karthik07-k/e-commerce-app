@@ -1,10 +1,10 @@
-package com.org.ecom.product;
+package com.org.ecom.order;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ProductApplicationTests {
+class OrderApplicationTests {
 
 	@Test
 	void contextLoads() {

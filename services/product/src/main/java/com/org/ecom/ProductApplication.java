@@ -1,4 +1,4 @@
-package com.org.ecom.product;
+package com.org.ecom;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
