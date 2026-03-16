@@ -1,9 +1,10 @@
-package com.org.ecom.utils;
+package com.org.ecom.orderLine.service;
 
 
-import com.org.ecom.model.OrderLine;
-import com.org.ecom.model.OrderLineRequest;
 import com.org.ecom.order.Order;
+import com.org.ecom.orderLine.model.OrderLine;
+import com.org.ecom.orderLine.model.OrderLineRequest;
+import com.org.ecom.orderLine.model.OrderLineResponse;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,5 +21,12 @@ public class OrderLineMapper {
                 )
                 .quantity(orderLineRequst.quantity())
                 .build();
+    }
+
+    public OrderLineResponse toOrderLineResponse(OrderLineResponse orderLineResponse) {
+        return new OrderLineResponse(
+                orderLineResponse.id(),
+                orderLineResponse.quantity()
+        );
     }
 }

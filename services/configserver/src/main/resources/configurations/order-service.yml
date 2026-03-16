@@ -1,13 +1,21 @@
-datasource:
-  url: jdbc:postgresql://localhost:5432/order
-  username: postgres
-  password: root
-  driver-class-name: org.postgresql.Driver
-jpa:
-  hibernate:
-    ddl-auto: create
-  database: postgresql
-  database-platform: org.hibernate.dialect.PostgreSQLDialect
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/order
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  kafka:
+    producer:
+      bootstrap-servers: localhost:9092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      properties:
+        spring.json.type.mapping: orderConfirmation:com.microservices.orderservice.kafka.OrderConfirmation
 server:
   port: 8060
 application:
