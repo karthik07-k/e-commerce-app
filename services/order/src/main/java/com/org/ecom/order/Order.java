@@ -1,6 +1,6 @@
 package com.org.ecom.order;
 
-import com.org.ecom.model.OrderLine;
+import com.org.ecom.orderLine.model.OrderLine;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

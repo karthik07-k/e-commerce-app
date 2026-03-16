@@ -1,4 +1,4 @@
-package com.org.ecom.model;
+package com.org.ecom.orderLine.model;
 
 public record OrderLineRequest(
         Integer id,

@@ -1,4 +1,4 @@
-package com.org.ecom.model;
+package com.org.ecom.orderLine.model;
 
 import com.org.ecom.order.Order;
 import jakarta.persistence.*;
