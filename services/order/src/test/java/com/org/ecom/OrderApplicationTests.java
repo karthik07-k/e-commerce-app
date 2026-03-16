@@ -1,4 +1,4 @@
-package com.org.ecom.order;
+package com.org.ecom;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
