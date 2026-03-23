@@ -10,8 +10,10 @@ import com.org.ecom.model.PurchaseRequest;
 import com.org.ecom.order.Order;
 import com.org.ecom.orderLine.service.OrderLineService;
 import com.org.ecom.remote.CustomerClient;
+import com.org.ecom.remote.PaymentClient;
 import com.org.ecom.remote.ProductClient;
 import com.org.ecom.remote.model.PurchaseResponse;
+import com.org.ecom.remote.model.remote.PaymentRequest;
 import com.org.ecom.repository.OrderRepository;
 import com.org.ecom.utils.OrderMapper;
 import jakarta.validation.Valid;
@@ -33,6 +35,8 @@ public class OrderService {
     private final OrderMapper mapper;
     private final OrderLineService orderLineService;
     private final OrderProducer orderProducer;
+    private final PaymentClient paymentClient;
+
     public Order createOrder(@Valid OrderRequest request) {
         //check the customer --> customer ms
             var customer = customerClient.getCustomer(request.customerId()).getBody();
@@ -52,7 +56,16 @@ public class OrderService {
                     )
             );
         }
-        //TODO start payment process - payment ms
+
+        var paymentRequest = new PaymentRequest(
+            request.id(),
+                request.amount(),
+                request.paymentMethod(),
+                order.getOrderId(),
+                order.getReference(),
+                customer
+        );
+        paymentClient.requestOrderPayment(paymentRequest);
 
         //send the order confirmation --> notification ms (kafka)
         orderProducer.sendOrderConfirmation(
