@@ -1,0 +1,37 @@
+spring:
+  data:
+    mongodb: mongodb://root:root@localhost:27017/customer?authSource=admin
+  mongodb:
+    username: root
+    password: root
+    host: localhost
+    port: 27017
+    database: customer
+    authentication-database: admin
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: paymentGroup, orderGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: com.org.ecom.notification, com.microservices.orderservice.kafka
+        spring.json.type.mapping: orderConfirmation:com.microservices.orderservice.kafka.OrderConfirmation, paymentConfirmation:com.org.ecom.notification.PaymentNotificationRequest
+  mail:
+    host: localhost
+    port: 1025
+    username: karthik
+    password: karthik
+    properties:
+      mail:
+        smtp:
+          trust: '*'
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+server:
+  port: 9020

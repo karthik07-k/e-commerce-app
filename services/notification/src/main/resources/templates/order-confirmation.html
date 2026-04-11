@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Order Confirmation</title>
+
+    <style>
+        body{
+            margin:0;
+            padding:0;
+            background: #a0addf;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        .wrapper{
+            width:100%;
+            padding:40px 0;
+        }
+
+        .container{
+            width:650px;
+            margin:0 auto;
+            background: #eddddd;
+            border-radius:8px;
+            box-shadow:0 2px 8px rgba(0,0,0,0.08);
+            overflow:hidden;
+        }
+
+        .header{
+            background:#198754;
+            color:white;
+            padding:20px;
+            font-size:20px;
+            font-weight:bold;
+        }
+
+        .content{
+            padding:25px;
+        }
+
+        .info{
+            margin-bottom:20px;
+        }
+
+        .info-row{
+            padding:8px 0;
+        }
+
+        .label{
+            font-weight:bold;
+            color:#333;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:20px;
+        }
+
+        th{
+            background:#f1f3f5;
+            padding:12px;
+            text-align:left;
+            font-size:14px;
+        }
+
+        td{
+            padding:12px;
+            border-bottom:1px solid #eee;
+            font-size:14px;
+        }
+
+        tr:last-child td{
+            border-bottom:none;
+        }
+
+        .total-box{
+            margin-top:20px;
+            text-align:right;
+            font-size:16px;
+            font-weight:bold;
+        }
+
+        .total-amount{
+            color:#198754;
+            font-size:18px;
+        }
+
+        .footer{
+            background:#fafafa;
+            padding:15px 25px;
+            font-size:12px;
+            color:#777;
+            text-align:center;
+        }
+
+        .badge{
+            display:inline-block;
+            background:#e9f7ef;
+            color:#198754;
+            padding:6px 10px;
+            border-radius:4px;
+            font-size:12px;
+            margin-bottom:15px;
+        }
+    </style>
+
+</head>
+
+<body>
+<div class="wrapper">
+    <div class="container">
+
+        <div class="header">
+            Order Details
+        </div>
+
+        <div class="content">
+
+            <div class="badge">
+                Order Confirmed
+            </div>
+
+            <div class="info">
+                <div class="info-row">
+                    <span class="label">Customer Name:</span>
+                    <span th:text="${customerName}"></span>
+                </div>
+
+                <div class="info-row">
+                    <span class="label">Order Reference:</span>
+                    <span th:text="${orderReference}"></span>
+                </div>
+            </div>
+
+            <table>
+                <thead>
+                <tr>
+                    <th>Product</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Total</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="item : ${products}">
+                    <td th:text="${item.productName}"></td>
+                    <td th:text="${item.quantity}"></td>
+                    <td th:text="${item.price}"></td>
+                    <td th:text="${item.total}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="total-box">
+                Total Amount:
+                <span class="total-amount" th:text="${totalAmount}"></span>
+            </div>
+
+        </div>
+
+        <div class="footer">
+            This is an automated email. Please do not reply to this email.<br/>
+            © 2026 Your Company. All rights reserved.
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
